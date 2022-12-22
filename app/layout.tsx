@@ -1,3 +1,5 @@
+import { Footer } from '../components/Footer/Footer'
+import { Header } from '../components/Header/Header'
 import '../styles/global.css'
 
 export default function RootLayout({
@@ -8,8 +10,12 @@ export default function RootLayout({
   return (
     <html>
       <head />
-      <body>
-        {children}
+      <body className='flex flex-col text-white bg-neutral-700'>
+          <Header />
+          <main className='flex-1 py-10'>
+            {children}
+          </main>
+          <Footer />
       </body>
     </html>
   )
