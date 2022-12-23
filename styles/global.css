@@ -9,3 +9,7 @@ html, body {
 .container {
   @apply max-w-6xl px-5 mx-auto
 }
+
+[data-nextjs-scroll-focus-boundary] {
+  height: 100%;
+}
