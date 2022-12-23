@@ -1,7 +1,9 @@
+import ProductsList from "../components/Products/ProductsList";
+
 const Page = () => {
   return (
     <div className="container">
-      Page
+      <ProductsList columns={4} gap={6}/>
     </div>
   );
 }
