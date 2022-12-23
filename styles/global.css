@@ -10,6 +10,10 @@ html, body {
   @apply max-w-6xl px-5 mx-auto
 }
 
+#__next {
+  @apply h-full
+}
+
 [data-nextjs-scroll-focus-boundary] {
-  height: 100%;
+  @apply h-full
 }
