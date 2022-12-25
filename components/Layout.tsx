@@ -8,7 +8,7 @@ type GeneralLayoutProps = {
 
 export default function Layout({ children }: GeneralLayoutProps) {
   return (
-    <div className="h-full flex flex-col text-white bg-neutral-700">
+    <div className="min-h-full flex flex-col text-white bg-neutral-700">
       <Header />
       <main className='flex-1 py-10'>
         {children}

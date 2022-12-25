@@ -1,3 +1,4 @@
+import { IProduct } from "../../types/types";
 import ProductCard from "./ProductCard";
 
 interface ProductsListProps {
@@ -5,10 +6,19 @@ interface ProductsListProps {
   gap?: 1 | 2 | 3 | 4 | 5 | 6,
 }
 
-const ProductsList = ({
+async function getAllProducts() {
+  const res = await fetch("https://dummyjson.com/products")
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
+async function ProductsList ({
   columns = 3,
   gap = 6
-}: ProductsListProps) => {
+}: ProductsListProps) {
   const columnsVariants = {
     1: 'grid-cols-1',
     2: 'grid-cols-1 md:grid-cols-2',
@@ -24,9 +34,16 @@ const ProductsList = ({
     6: 'gap-6',
   }
 
+  const data = await getAllProducts()
+  const products: IProduct[] = data?.products
+
   return (
     <div className={`grid ${columnsVariants[columns]} ${gapVariants[gap]}`}>
-      <ProductCard />
+      {
+        products.map((product) => {
+          return <ProductCard product={product} key={product.id} />
+        })
+      }
     </div>
   );
 }
